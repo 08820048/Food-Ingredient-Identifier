@@ -18,14 +18,6 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'element-plus': ['element-plus'],
-          'vue': ['vue', '@vue/runtime-core', '@vue/runtime-dom']
-        }
-      }
-    }
+    chunkSizeWarningLimit: 1000
   }
 })
