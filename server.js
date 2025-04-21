@@ -13,7 +13,10 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // 静态文件服务
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist'), {
+  index: false,
+  extensions: ['html']
+}));
 
 // API路由
 app.post('/api/analyze', async (req, res) => {
