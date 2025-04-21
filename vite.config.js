@@ -5,7 +5,12 @@ import ElementPlus from 'unplugin-element-plus/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
-  plugins: [vue(), ElementPlus()],
+  plugins: [
+    vue({
+      reactivityTransform: true
+    }),
+    ElementPlus()
+  ],
   server: {
     proxy: {
       '/api': {
@@ -22,9 +27,12 @@ export default defineConfig({
       output: {
         manualChunks: {
           'element-plus': ['element-plus'],
-          'vue': ['vue']
+          'vue': ['vue', '@vue/runtime-core']
         }
       }
     }
+  },
+  optimizeDeps: {
+    include: ['vue', 'element-plus']
   }
 })
